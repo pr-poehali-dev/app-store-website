@@ -28,17 +28,17 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Информация о компании */}
           <div>
             <div className="flex items-center mb-4">
-              <div className="w-10 h-10 bg-gradient-brand rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
                 <Download className="w-6 h-6 text-white" />
               </div>
               <span className="ml-3 text-xl font-golos font-bold">
-                AppStore
+                Магазин приложений
               </span>
             </div>
             <p className="text-gray-300 mb-6 font-golos">

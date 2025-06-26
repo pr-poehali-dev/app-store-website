@@ -48,6 +48,13 @@ export default {
           blue: "hsl(var(--brand-blue))",
           purple: "hsl(var(--brand-purple))",
           gray: "hsl(var(--brand-gray))",
+          vibrant: {
+            pink: "hsl(var(--vibrant-pink))",
+            orange: "hsl(var(--vibrant-orange))",
+            green: "hsl(var(--vibrant-green))",
+            cyan: "hsl(var(--vibrant-cyan))",
+            yellow: "hsl(var(--vibrant-yellow))",
+          },
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -79,6 +86,14 @@ export default {
       backgroundImage: {
         "gradient-brand":
           "linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)))",
+        "gradient-rainbow":
+          "linear-gradient(135deg, hsl(var(--vibrant-pink)), hsl(var(--vibrant-orange)), hsl(var(--vibrant-yellow)))",
+        "gradient-ocean":
+          "linear-gradient(135deg, hsl(var(--vibrant-cyan)), hsl(var(--brand-blue)))",
+        "gradient-sunset":
+          "linear-gradient(135deg, hsl(var(--vibrant-orange)), hsl(var(--vibrant-pink)))",
+        "gradient-forest":
+          "linear-gradient(135deg, hsl(var(--vibrant-green)), hsl(var(--brand-blue)))",
       },
       borderRadius: {
         lg: "var(--radius)",

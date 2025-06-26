@@ -15,18 +15,29 @@ const CategoryCard = ({
   color,
   count,
 }: CategoryCardProps) => {
+  const gradients = {
+    "bg-blue-500": "bg-gradient-to-br from-blue-500 to-cyan-400",
+    "bg-purple-500": "bg-gradient-to-br from-purple-500 to-pink-400",
+    "bg-green-500": "bg-gradient-to-br from-green-500 to-emerald-400",
+    "bg-orange-500": "bg-gradient-to-br from-orange-500 to-yellow-400",
+  };
+
+  const gradientClass = gradients[color as keyof typeof gradients] || color;
+
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-all duration-300 hover:border-primary cursor-pointer group">
+    <div className="bg-white rounded-xl border-2 border-transparent bg-gradient-to-br from-white to-gray-50 p-6 hover:shadow-2xl hover:border-gradient-to-r hover:from-purple-400 hover:to-pink-400 transition-all duration-300 cursor-pointer group hover:scale-105">
       <div
-        className={`w-12 h-12 rounded-xl ${color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
+        className={`w-12 h-12 rounded-xl ${gradientClass} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}
       >
         <Icon name={iconName} size={24} className="text-white" />
       </div>
-      <h3 className="text-lg font-montserrat font-semibold text-gray-900 mb-2">
+      <h3 className="text-lg font-montserrat font-semibold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">
         {title}
       </h3>
       <p className="text-gray-600 text-sm mb-3">{description}</p>
-      <div className="text-xs text-gray-500">{count} приложений</div>
+      <div className="text-xs text-purple-500 font-medium">
+        {count} приложений
+      </div>
     </div>
   );
 };

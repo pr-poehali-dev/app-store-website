@@ -12,28 +12,28 @@ const Index = () => {
       title: "Офисные приложения",
       description: "Текстовые редакторы, таблицы, презентации",
       iconName: "FileText",
-      color: "bg-blue-500",
+      color: "bg-gradient-to-r from-blue-500 to-cyan-500",
       count: 24,
     },
     {
       title: "Разработка",
       description: "IDE, компиляторы, инструменты программирования",
       iconName: "Code",
-      color: "bg-purple-500",
+      color: "bg-gradient-to-r from-purple-500 to-pink-500",
       count: 18,
     },
     {
       title: "Образование",
       description: "Обучающие программы и курсы",
       iconName: "GraduationCap",
-      color: "bg-green-500",
+      color: "bg-gradient-to-r from-green-500 to-teal-500",
       count: 15,
     },
     {
       title: "Графика и дизайн",
       description: "Фоторедакторы, 3D-моделирование, дизайн",
       iconName: "Palette",
-      color: "bg-orange-500",
+      color: "bg-gradient-to-r from-orange-500 to-red-500",
       count: 12,
     },
   ];
@@ -58,7 +58,7 @@ const Index = () => {
         "Профессиональный редактор изображений для дизайнеров и фотографов",
       rating: 4.7,
       downloads: "50M+",
-      price: "₽1,299",
+      price: "Бесплатно",
       imageUrl:
         "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=64&h=64&fit=crop",
       category: "Дизайн",
@@ -123,7 +123,7 @@ const Index = () => {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen bg-gray-50 font-golos">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 font-golos">
       <Header onSearch={setSearchQuery} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -136,7 +136,7 @@ const Index = () => {
               description="Все инструменты для работы в одном пакете"
               buttonText="Скачать бесплатно"
               imageUrl="https://images.unsplash.com/photo-1633265486064-086b219458ec?w=400&h=200&fit=crop"
-              gradient="bg-gradient-to-r from-blue-600 to-blue-800"
+              gradient="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
             />
             <PromoBanner
               title="Photoshop 2024"
@@ -144,7 +144,7 @@ const Index = () => {
               description="Создавайте невероятные проекты с ИИ"
               buttonText="Попробовать"
               imageUrl="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=400&h=200&fit=crop"
-              gradient="bg-gradient-to-r from-purple-600 to-purple-800"
+              gradient="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600"
             />
           </div>
         )}
