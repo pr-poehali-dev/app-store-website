@@ -23,10 +23,10 @@ const AppCard = ({
   category,
 }: AppCardProps) => {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-blue-300 transition-all duration-300 group hover:scale-[1.01]">
+    <div className="bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl hover:bg-white/90 transition-all duration-300 group hover:scale-[1.01]">
       <div className="p-6">
         <div className="flex items-start space-x-4">
-          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 flex-shrink-0 overflow-hidden border-2 border-purple-200">
+          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 flex-shrink-0 overflow-hidden">
             <img
               src={imageUrl}
               alt={name}
@@ -51,9 +51,6 @@ const AppCard = ({
             </p>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <span className="text-lg font-bold bg-gradient-to-r from-green-500 to-emerald-400 bg-clip-text text-transparent">
-                  Бесплатно
-                </span>
                 <span className="text-xs bg-gradient-to-r from-purple-400 to-pink-400 text-white px-2 py-1 rounded-full">
                   {category}
                 </span>

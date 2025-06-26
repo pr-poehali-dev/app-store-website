@@ -17,12 +17,12 @@ const Header = ({ onSearch }: HeaderProps) => {
   };
 
   return (
-    <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <header className="bg-gradient-to-br from-blue-50/80 via-purple-50/80 to-pink-50/80 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md">
+              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
                 <Download className="w-6 h-6 text-white" />
               </div>
               <span className="ml-3 text-xl font-golos font-bold text-gray-800">
@@ -32,14 +32,14 @@ const Header = ({ onSearch }: HeaderProps) => {
           </div>
 
           <div className="flex-1 max-w-2xl mx-8">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <div className="relative group">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-purple-500 transition-colors" />
               <Input
                 type="search"
                 placeholder="Поиск приложений..."
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className="pl-10 bg-gray-50 border-gray-200 focus:bg-white font-golos"
+                className="pl-12 h-12 bg-white/80 backdrop-blur-sm border-0 shadow-lg focus:shadow-xl focus:bg-white/90 rounded-xl font-golos transition-all duration-300 focus:ring-2 focus:ring-purple-500/20"
               />
             </div>
           </div>

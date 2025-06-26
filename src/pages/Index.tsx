@@ -8,6 +8,8 @@ import { useState, useMemo } from "react";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
   const categories = [
     {
       title: "Офисные приложения",
@@ -135,14 +137,35 @@ const Index = () => {
   ];
 
   const filteredApps = useMemo(() => {
-    if (!searchQuery) return apps;
-    return apps.filter(
-      (app) =>
-        app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        app.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        app.category.toLowerCase().includes(searchQuery.toLowerCase()),
-    );
-  }, [searchQuery]);
+    let filtered = apps;
+
+    if (selectedCategory) {
+      filtered = filtered.filter((app) =>
+        app.category.toLowerCase().includes(selectedCategory.toLowerCase()),
+      );
+    }
+
+    if (searchQuery) {
+      filtered = filtered.filter(
+        (app) =>
+          app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          app.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          app.category.toLowerCase().includes(searchQuery.toLowerCase()),
+      );
+    }
+
+    return filtered;
+  }, [searchQuery, selectedCategory]);
+
+  const handleCategoryClick = (categoryTitle: string) => {
+    setSelectedCategory(categoryTitle);
+    setSearchQuery("");
+  };
+
+  const clearFilters = () => {
+    setSelectedCategory(null);
+    setSearchQuery("");
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 font-golos">
@@ -174,12 +197,19 @@ const Index = () => {
         {/* Категории */}
         {!searchQuery && (
           <section className="mb-12">
-            <h2 className="text-2xl font-golos font-bold text-gray-900 mb-6">
-              Категории приложений
-            </h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-golos font-bold text-gray-900">
+                Категории приложений
+              </h2>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {categories.map((category, index) => (
-                <CategoryCard key={index} {...category} />
+                <div
+                  key={index}
+                  onClick={() => handleCategoryClick(category.title)}
+                >
+                  <CategoryCard {...category} />
+                </div>
               ))}
             </div>
           </section>
@@ -189,13 +219,36 @@ const Index = () => {
         <section>
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-golos font-bold text-gray-900">
-              {searchQuery
-                ? `Результаты поиска (${filteredApps.length})`
-                : "Популярные приложения"}
+              {selectedCategory
+                ? `${selectedCategory} (${filteredApps.length})`
+                : searchQuery
+                  ? `Результаты поиска (${filteredApps.length})`
+                  : "Популярные приложения"}
             </h2>
-            {!searchQuery && (
-              <button className="text-primary hover:text-primary/80 font-golos font-medium">
-                Показать все
+            {!searchQuery && !selectedCategory && (
+              <button className="flex items-center text-purple-500 hover:text-purple-600 font-golos font-medium transition-colors group">
+                <span>Показать все</span>
+                <svg
+                  className="w-5 h-5 ml-1 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            )}
+            {(selectedCategory || searchQuery) && (
+              <button
+                onClick={clearFilters}
+                className="text-gray-500 hover:text-gray-700 font-golos font-medium transition-colors"
+              >
+                Очистить фильтры
               </button>
             )}
           </div>

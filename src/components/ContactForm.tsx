@@ -27,7 +27,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 mb-12">
+    <section className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 mb-12 mt-16 shadow-lg">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-golos font-bold text-gray-900 mb-4">
@@ -81,13 +81,13 @@ const ContactForm = () => {
 
           {/* Форма обратной связи */}
           <div className="bg-white rounded-xl p-6 shadow-sm">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <Input
                 name="name"
                 placeholder="Ваше имя"
                 value={formData.name}
                 onChange={handleChange}
-                className="font-golos"
+                className="font-golos h-12 bg-gray-50/80 border-0 focus:bg-white/90 rounded-xl shadow-sm focus:shadow-md transition-all duration-300 focus:ring-2 focus:ring-purple-500/20"
                 required
               />
               <Input
@@ -96,7 +96,7 @@ const ContactForm = () => {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                className="font-golos"
+                className="font-golos h-12 bg-gray-50/80 border-0 focus:bg-white/90 rounded-xl shadow-sm focus:shadow-md transition-all duration-300 focus:ring-2 focus:ring-purple-500/20"
                 required
               />
               <Textarea
@@ -104,12 +104,12 @@ const ContactForm = () => {
                 placeholder="Ваше сообщение"
                 value={formData.message}
                 onChange={handleChange}
-                className="font-golos min-h-[120px]"
+                className="font-golos min-h-[120px] bg-gray-50/80 border-0 focus:bg-white/90 rounded-xl shadow-sm focus:shadow-md transition-all duration-300 focus:ring-2 focus:ring-purple-500/20 resize-none"
                 required
               />
               <Button
                 type="submit"
-                className="w-full font-golos bg-blue-600 hover:bg-blue-700"
+                className="w-full font-golos h-12 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]"
               >
                 <Send className="w-4 h-4 mr-2" />
                 Отправить сообщение
