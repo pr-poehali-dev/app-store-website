@@ -27,7 +27,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 mb-12 mt-16 shadow-lg">
+    <section className="bg-white rounded-2xl p-8 mb-12 mt-16">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-golos font-bold text-gray-900 mb-4">
@@ -80,7 +80,7 @@ const ContactForm = () => {
           </div>
 
           {/* Форма обратной связи */}
-          <div className="bg-white rounded-xl p-6 shadow-sm">
+          <div className="bg-white rounded-xl p-6">
             <form onSubmit={handleSubmit} className="space-y-6">
               <Input
                 name="name"

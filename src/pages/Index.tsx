@@ -8,7 +8,10 @@ import { useState, useMemo } from "react";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(
+    "Офисные приложения",
+  );
+  const [showAllInCategory, setShowAllInCategory] = useState(false);
 
   const categories = [
     {
@@ -154,17 +157,28 @@ const Index = () => {
       );
     }
 
+    // Если выбрана категория и не включен режим "показать все", показываем только 8 приложений
+    if (selectedCategory && !showAllInCategory && !searchQuery) {
+      return filtered.slice(0, 8);
+    }
+
     return filtered;
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory, showAllInCategory]);
 
   const handleCategoryClick = (categoryTitle: string) => {
     setSelectedCategory(categoryTitle);
     setSearchQuery("");
+    setShowAllInCategory(false);
   };
 
   const clearFilters = () => {
     setSelectedCategory(null);
     setSearchQuery("");
+    setShowAllInCategory(false);
+  };
+
+  const handleShowAll = () => {
+    setShowAllInCategory(true);
   };
 
   return (
@@ -227,6 +241,27 @@ const Index = () => {
             </h2>
             {!searchQuery && !selectedCategory && (
               <button className="flex items-center text-purple-500 hover:text-purple-600 font-golos font-medium transition-colors group">
+                <span>Показать все</span>
+                <svg
+                  className="w-5 h-5 ml-1 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            )}
+            {selectedCategory && !searchQuery && !showAllInCategory && (
+              <button
+                onClick={handleShowAll}
+                className="flex items-center text-purple-500 hover:text-purple-600 font-golos font-medium transition-colors group"
+              >
                 <span>Показать все</span>
                 <svg
                   className="w-5 h-5 ml-1 transform group-hover:translate-x-1 transition-transform"

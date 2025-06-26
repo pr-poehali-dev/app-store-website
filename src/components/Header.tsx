@@ -39,7 +39,7 @@ const Header = ({ onSearch }: HeaderProps) => {
                 placeholder="Поиск приложений..."
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className="pl-12 h-12 bg-white/80 backdrop-blur-sm border-0 shadow-lg focus:shadow-xl focus:bg-white/90 rounded-xl font-golos transition-all duration-300 focus:ring-2 focus:ring-purple-500/20"
+                className="pl-12 h-12 bg-transparent border-0 border-b-2 border-gray-200 hover:border-gray-300 focus:border-purple-500 rounded-none font-golos transition-all duration-300 focus:ring-0 focus:outline-none"
               />
             </div>
           </div>
