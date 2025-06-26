@@ -25,13 +25,13 @@ const CategoryCard = ({
   const gradientClass = gradients[color as keyof typeof gradients] || color;
 
   return (
-    <div className="bg-white rounded-xl border-2 border-transparent bg-gradient-to-br from-white to-gray-50 p-6 hover:shadow-2xl hover:border-gradient-to-r hover:from-purple-400 hover:to-pink-400 transition-all duration-300 cursor-pointer group hover:scale-105">
+    <div className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg hover:border-blue-300 transition-all duration-300 cursor-pointer group hover:scale-[1.02]">
       <div
         className={`w-12 h-12 rounded-xl ${gradientClass} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}
       >
         <Icon name={iconName} size={24} className="text-white" />
       </div>
-      <h3 className="text-lg font-montserrat font-semibold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">
+      <h3 className="text-lg font-montserrat font-semibold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
         {title}
       </h3>
       <p className="text-gray-600 text-sm mb-3">{description}</p>

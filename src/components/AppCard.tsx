@@ -23,7 +23,7 @@ const AppCard = ({
   category,
 }: AppCardProps) => {
   return (
-    <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-gradient-to-r hover:from-purple-400 hover:to-pink-400 transition-all duration-300 group hover:scale-[1.02]">
+    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-blue-300 transition-all duration-300 group hover:scale-[1.01]">
       <div className="p-6">
         <div className="flex items-start space-x-4">
           <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 flex-shrink-0 overflow-hidden border-2 border-purple-200">
@@ -34,7 +34,7 @@ const AppCard = ({
             />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-montserrat font-semibold text-gray-900 truncate group-hover:text-purple-700 transition-colors">
+            <h3 className="text-lg font-montserrat font-semibold text-gray-900 truncate group-hover:text-blue-700 transition-colors">
               {name}
             </h3>
             <p className="text-sm text-gray-600 mb-1">{developer}</p>

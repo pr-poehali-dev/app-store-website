@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import CategoryCard from "@/components/CategoryCard";
 import AppCard from "@/components/AppCard";
+import ContactForm from "@/components/ContactForm";
 import PromoBanner from "@/components/PromoBanner";
 import Footer from "@/components/Footer";
 import { useState, useMemo } from "react";
@@ -35,6 +36,27 @@ const Index = () => {
       iconName: "Palette",
       color: "bg-gradient-to-r from-orange-500 to-red-500",
       count: 12,
+    },
+    {
+      title: "Для учебы",
+      description: "Электронные учебники, конспекты, планировщики",
+      iconName: "BookOpen",
+      color: "bg-gradient-to-r from-indigo-500 to-blue-500",
+      count: 28,
+    },
+    {
+      title: "Информатика и программирование",
+      description: "Среды разработки, компиляторы, отладчики",
+      iconName: "Terminal",
+      color: "bg-gradient-to-r from-gray-600 to-gray-800",
+      count: 32,
+    },
+    {
+      title: "Корпоративные приложения",
+      description: "CRM, ERP, системы документооборота",
+      iconName: "Building",
+      color: "bg-gradient-to-r from-teal-500 to-cyan-500",
+      count: 16,
     },
   ];
 
@@ -123,7 +145,7 @@ const Index = () => {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 font-golos">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 font-golos">
       <Header onSearch={setSearchQuery} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -155,7 +177,7 @@ const Index = () => {
             <h2 className="text-2xl font-golos font-bold text-gray-900 mb-6">
               Категории приложений
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {categories.map((category, index) => (
                 <CategoryCard key={index} {...category} />
               ))}
@@ -190,6 +212,9 @@ const Index = () => {
             </div>
           )}
         </section>
+
+        {/* Форма обратной связи */}
+        <ContactForm />
       </main>
 
       <Footer />

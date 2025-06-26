@@ -17,15 +17,15 @@ const Header = ({ onSearch }: HeaderProps) => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 border-b border-purple-200 sticky top-0 z-50 shadow-lg">
+    <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md">
                 <Download className="w-6 h-6 text-white" />
               </div>
-              <span className="ml-3 text-xl font-golos font-bold text-white drop-shadow-sm">
+              <span className="ml-3 text-xl font-golos font-bold text-gray-800">
                 Магазин приложений
               </span>
             </div>
@@ -48,11 +48,11 @@ const Header = ({ onSearch }: HeaderProps) => {
             <Button
               variant="ghost"
               size="sm"
-              className="font-golos text-white hover:bg-white/20 border border-white/30"
+              className="font-golos text-gray-700 hover:bg-gray-100 border border-gray-300"
             >
               Мои приложения
             </Button>
-            <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-500 rounded-full flex items-center justify-center shadow-md">
               <User className="w-5 h-5 text-white" />
             </div>
           </div>
