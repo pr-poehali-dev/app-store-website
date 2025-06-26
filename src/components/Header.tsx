@@ -1,18 +1,31 @@
 import { Search, Download, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
-const Header = () => {
+interface HeaderProps {
+  onSearch?: (query: string) => void;
+}
+
+const Header = ({ onSearch }: HeaderProps) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    onSearch?.(query);
+  };
+
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <div className="w-8 h-8 bg-gradient-brand rounded-lg flex items-center justify-center">
-                <Download className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 bg-gradient-brand rounded-xl flex items-center justify-center">
+                <Download className="w-6 h-6 text-white" />
               </div>
-              <span className="ml-3 text-xl font-montserrat font-bold text-gray-900">
+              <span className="ml-3 text-xl font-golos font-bold text-gray-900">
                 AppStore
               </span>
             </div>
@@ -24,19 +37,20 @@ const Header = () => {
               <Input
                 type="search"
                 placeholder="Поиск приложений..."
-                className="pl-10 bg-gray-50 border-gray-200 focus:bg-white"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="pl-10 bg-gray-50 border-gray-200 focus:bg-white font-golos"
               />
             </div>
           </div>
 
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" className="font-golos">
               Мои приложения
             </Button>
-            <Button variant="outline" size="sm">
-              <User className="w-4 h-4 mr-2" />
-              Войти
-            </Button>
+            <div className="w-8 h-8 bg-gradient-brand rounded-full flex items-center justify-center">
+              <User className="w-5 h-5 text-white" />
+            </div>
           </div>
         </div>
       </div>

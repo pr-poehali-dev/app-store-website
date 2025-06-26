@@ -74,8 +74,7 @@ export default {
         },
       },
       fontFamily: {
-        roboto: ["Roboto", "sans-serif"],
-        montserrat: ["Montserrat", "sans-serif"],
+        golos: ["Golos Text", "sans-serif"],
       },
       backgroundImage: {
         "gradient-brand":

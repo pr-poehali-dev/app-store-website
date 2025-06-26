@@ -2,8 +2,11 @@ import Header from "@/components/Header";
 import CategoryCard from "@/components/CategoryCard";
 import AppCard from "@/components/AppCard";
 import PromoBanner from "@/components/PromoBanner";
+import Footer from "@/components/Footer";
+import { useState, useMemo } from "react";
 
 const Index = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const categories = [
     {
       title: "Офисные приложения",
@@ -109,60 +112,87 @@ const Index = () => {
     },
   ];
 
+  const filteredApps = useMemo(() => {
+    if (!searchQuery) return apps;
+    return apps.filter(
+      (app) =>
+        app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        app.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        app.category.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+  }, [searchQuery]);
+
   return (
-    <div className="min-h-screen bg-gray-50 font-roboto">
-      <Header />
+    <div className="min-h-screen bg-gray-50 font-golos">
+      <Header onSearch={setSearchQuery} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Промо-баннеры */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-          <PromoBanner
-            title="Office 365"
-            subtitle="Новая версия"
-            description="Все инструменты для работы в одном пакете"
-            buttonText="Скачать бесплатно"
-            imageUrl="https://images.unsplash.com/photo-1633265486064-086b219458ec?w=400&h=200&fit=crop"
-            gradient="bg-gradient-to-r from-blue-600 to-blue-800"
-          />
-          <PromoBanner
-            title="Photoshop 2024"
-            subtitle="Для творчества"
-            description="Создавайте невероятные проекты с ИИ"
-            buttonText="Попробовать"
-            imageUrl="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=400&h=200&fit=crop"
-            gradient="bg-gradient-to-r from-purple-600 to-purple-800"
-          />
-        </div>
+        {!searchQuery && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+            <PromoBanner
+              title="Office 365"
+              subtitle="Новая версия"
+              description="Все инструменты для работы в одном пакете"
+              buttonText="Скачать бесплатно"
+              imageUrl="https://images.unsplash.com/photo-1633265486064-086b219458ec?w=400&h=200&fit=crop"
+              gradient="bg-gradient-to-r from-blue-600 to-blue-800"
+            />
+            <PromoBanner
+              title="Photoshop 2024"
+              subtitle="Для творчества"
+              description="Создавайте невероятные проекты с ИИ"
+              buttonText="Попробовать"
+              imageUrl="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=400&h=200&fit=crop"
+              gradient="bg-gradient-to-r from-purple-600 to-purple-800"
+            />
+          </div>
+        )}
 
         {/* Категории */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-montserrat font-bold text-gray-900 mb-6">
-            Категории приложений
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categories.map((category, index) => (
-              <CategoryCard key={index} {...category} />
-            ))}
-          </div>
-        </section>
+        {!searchQuery && (
+          <section className="mb-12">
+            <h2 className="text-2xl font-golos font-bold text-gray-900 mb-6">
+              Категории приложений
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {categories.map((category, index) => (
+                <CategoryCard key={index} {...category} />
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Популярные приложения */}
         <section>
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-montserrat font-bold text-gray-900">
-              Популярные приложения
+            <h2 className="text-2xl font-golos font-bold text-gray-900">
+              {searchQuery
+                ? `Результаты поиска (${filteredApps.length})`
+                : "Популярные приложения"}
             </h2>
-            <button className="text-primary hover:text-primary/80 font-medium">
-              Показать все
-            </button>
+            {!searchQuery && (
+              <button className="text-primary hover:text-primary/80 font-golos font-medium">
+                Показать все
+              </button>
+            )}
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {apps.map((app, index) => (
+            {filteredApps.map((app, index) => (
               <AppCard key={index} {...app} />
             ))}
           </div>
+          {filteredApps.length === 0 && searchQuery && (
+            <div className="text-center py-12">
+              <p className="text-gray-500 font-golos">
+                По запросу "{searchQuery}" ничего не найдено
+              </p>
+            </div>
+          )}
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 };
